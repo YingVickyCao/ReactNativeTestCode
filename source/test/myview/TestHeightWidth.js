@@ -28,11 +28,10 @@ export default class ff extends Component {
             //     <View style={{ width: 50, height: 50, backgroundColor: '#0000ff' }} />
             // </View>
 
-            //  flex: 比例
-            <View style={{ flex: 1, flexDirection:'row' }}>
-                <View style={{ flex: 1, height:50,  backgroundColor: '#ff0000' }} />
-                <View style={{ flex: 2, height:50, backgroundColor: '#00ff00' }} />
-                <View style={{ flex: 3, height:50, backgroundColor: '#0000ff' }} />
+            <View style={{ flex: 1, flexDirection: 'row' }}>
+                <Text style={{ backgroundColor: '#ff0000' }}> Auto</Text>
+                <Text style={{ height: 50, backgroundColor: '#0f0' }}> B</Text>
+                {/* <Text style={{ height: , backgroundColor: '#0f0' }}> B</Text> */}
             </View>
         );
     }
