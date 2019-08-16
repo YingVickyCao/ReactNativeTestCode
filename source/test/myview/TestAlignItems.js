@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View } from 'react-native'
+import { View,Text } from 'react-native'
 
 export default class TestAlignItems extends Component {
     render() {
@@ -19,6 +19,7 @@ export default class TestAlignItems extends Component {
                 <View style={{ height: 50, backgroundColor: '#0f0' }}></View>
                 <View style={{ width: 50, height: 50, backgroundColor: '#00f' }}></View>
             </View >
+            // <Text style={{color: 'black'}}>Hello world</Text>
         );
     }
 }
