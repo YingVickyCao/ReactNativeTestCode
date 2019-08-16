@@ -13,6 +13,7 @@ export default class ff extends Component {
                 <TextInput style={{ height: 100, alignItems:'stretch',borderColor: '#f00', borderWidth: 1, backgroundColor: 'gray' }}
                     onChangeText={(text) => this.setState({ text })} > Auto</TextInput>
                 
+                {/*  wrap_content */}
                 <Text style={{  alignSelf:'center',flex:0, width:100, backgroundColor: '#0f0' }}> {this.state.text} </Text>
             </View>
         );
