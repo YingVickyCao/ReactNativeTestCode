@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "babel src/index.js -o dist/index.js && babel src/destructuring.js -o dist/destructuring.js"
+    "build": "babel src/index.js -o dist/index.js && babel src/destructuring.js -o dist/destructuring.js && babel src/DefineModules.js -o dist/DefineModules.js && babel src/UseModule.js -o dist/UseModule.js"
   },
   "keywords": [],
   "author": "",

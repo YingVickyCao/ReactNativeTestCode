@@ -150,7 +150,23 @@ function d() {
 
   */
 
+}
 
+// 模板字符串（template string）ES6
+// 1） 在字符串中嵌入变量 
+// 2） 仅仅当做普通字符
+{
+  // 当行
+  console.log('Hi, A');
 
+  // 两行
+  console.log(`Two
+  Line`);
 
+  // 嵌入变量
+  let name = 'C';
+  console.log(`Hi, ${name}`); // Hi, C
+
+  let x = 2, y = 30;
+  console.log( `${x} * ${y} =  ${x*y}`) // 2 * 30 =  60
 }

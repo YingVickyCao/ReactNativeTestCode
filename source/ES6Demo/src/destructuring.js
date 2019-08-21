@@ -15,7 +15,6 @@
   console.log(b); // 2
   console.log(c); // undefined
 
-
   // 使用嵌套数组进行解构
   // TODO:
   // let [a, [[b], c]] = [1, [[2], 3]];
@@ -181,6 +180,7 @@
 */
 
 // 字符串的解构赋值
+/*
 {
   const [a, b] = 'xyz'
   a;    // x
@@ -190,5 +190,44 @@
   len;  // 3
 
 }
+*/
 
 // 解构的用途
+/*
+{
+  // 交换变量的值
+  let x = 1;
+  let y = 2;
+  [x, y] = [y, x];
+  x; // 2
+  y; // 1
+
+  // 从函数返回多个值
+  function f() {
+    return [1, 2];
+  }
+  let [a, b] = f(); // 数组
+  a; // 1
+  b; // 2
+
+  function f() {
+    return {
+      a: 1,
+      b: 2
+    };
+  }
+  let { a, b } = f(); // 对象
+  a; // 1
+  b; // 2
+
+  // 遍历map
+  const map = new Map();
+  map.set("a", 1);
+  map.set('b', 2);
+  for (let [key, value] of map) {
+    // a 1
+    // b 2
+    console.log(key, value);
+  }
+}
+*/
