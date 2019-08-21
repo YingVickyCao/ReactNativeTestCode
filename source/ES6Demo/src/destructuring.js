@@ -2,7 +2,7 @@
 // 解构分类：数组解构,对象解构,字符串解构
 
 // 数组解构赋值：数组的元素是按次序排列的，变量的取值由它的位置决定
-{
+/*{
   // ES6
 
   // 模式匹配:只要等号两边的模式相同，左边的变量就会被赋予对应的值. 如果解构不成功，变量的值就等于undefined。
@@ -10,7 +10,7 @@
   console.log(a); // 1
   console.log(b); // 2
 
-  let [a, b, c] = [1, 2];
+  let [a, b, c] = [1, 2];  // TypeError: Duplicate declaration "a"
   console.log(a); // 1
   console.log(b); // 2
   console.log(c); // undefined
@@ -80,9 +80,10 @@
   let [x, y = 'b'] = ['a']; // x='a', y='b'
   let [x, y = 'b'] = ['a', undefined]; // x='a', y='b'
 }
+*/
 
 // 对象的解构赋值:对象的属性没有次序，变量必须与属性同名，才能取到正确的值。
-{
+/*{
   let { obj1, obj2 } = { obj1: "a", obj2: "b" };
   obj1; // a
   obj2; // b
@@ -112,23 +113,72 @@
 
 
   // 对象的解构指定默认值。
-  let {x=3} ={};
+  let { x = 3 } = {};
   x;  // 3
 
-  let {x, y = 5} = {x:1}
+  let { x, y = 5 } = { x: 1 }
   x;  // 1
   y;  // 5
-}
+}*/
 
-// 函数参数的解构赋值
+// 函数参数的解构赋值:
+// 解构是将对象或者数组中的元素一个个提取出来，而赋值是给元素赋值，解构赋值的作用就是给对象或者数组的元素赋值。
+/*
 {
+  // 在react的父子组件传递参数过程中，就使用到了解构赋值。
+  // class Parent extends React.Component {
+  //   render() {
+  //     const { a = 3, b = 3 } = this.props
+  //     return <h1>{a}-{b}</h1>
+  //   }
+  // }
 
+  // ReactDOM.render(
+  //   <Parent a="1" b="2" />,
+  //   document.getElementById('root')
+  // );
+
+  // 函数参数默认值与解构赋值默认值结合使用
+
+  // TODO: 有形参吗？
+  function f({ x, y = 5 }) {
+    console.log(x, y);
+  }
+  f({});            // undefined   5
+  f({ x: 1 });      // 1    5
+  f({ x: 1, y: 2 });// 1    2
+  f();              // ERROR:Uncaught TypeError: Cannot destructure property `x` of 'undefined' or 'null'.
+
+  function f({ x, y = 5 } = {}) { // 性能最差
+    console.log(x, y);
+  }
+  f({});            // undefined   5
+  f({ x: 1 });      // 1    5
+  f({ x: 1, y: 2 });// 1    2
+  f();              // undefined   5
+
+  function f(x, y = 5) { // 性能最好
+    console.log(x, y);
+  }
+  f();            // undefined   5
+  f(1);           // 1    5
+  f(1, 2);        // 1    2
+  f();            // undefined   5
+
+  function fetch(url, { body = '', method = 'GET', headers = {} }) {
+    console.log(method);
+  }
+  fetch('http://example.com', {});
+  fetch('http://example.com'); // ERROR:VM410:1 Uncaught TypeError: Cannot destructure property `body` of 'undefined' or 'null'.
+
+  // 双重默认
+  function fetch(url, { body = '', method = 'GET', headers = {} } = {}) {
+    console.log(method);
+  }
+  fetch('http://example.com')
+  // "GET"
 }
-
-
-
-
-// 函数参数默认值与解构赋值默认值结合使用
+*/
 
 // 字符串的解构赋值
 // 解构的用途
