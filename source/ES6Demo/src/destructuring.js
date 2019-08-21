@@ -181,4 +181,14 @@
 */
 
 // 字符串的解构赋值
+{
+  const [a, b] = 'xyz'
+  a;    // x
+  b;    // y
+
+  let { length: len } = 'abc';
+  len;  // 3
+
+}
+
 // 解构的用途
