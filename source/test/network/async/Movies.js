@@ -9,6 +9,7 @@ export default class Movies extends Component {
             isLoading: false,
             // isShowResult: false,
             moviesData: '',
+            movies:null,
         }
     }
     /*
@@ -91,6 +92,10 @@ export default class Movies extends Component {
     _renderContent() {
         return <Text style={{ color: 'black' }}>{this.state.moviesData}</Text>
     }
+
+    // _renderContent4List() {
+    //     return <FileList data={this.state.movies} renderItem= />
+    // }
 
     render() {
         return (<View style={{ flex: 1, padding: 20 }} >
