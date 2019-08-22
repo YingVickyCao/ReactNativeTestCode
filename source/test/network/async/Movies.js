@@ -29,33 +29,35 @@ export default class Movies extends Component {
     // }
 
     _requestContent = () => {
+    
+        /*
+        console.log("-----isLoading1=" +this.state.isLoading);
+        this.setState({
+            isLoading: true
+        }, () => {
+            console.log("-----isLoading2=" +this.state.isLoading);
+            fetch('https://facebook.github.io/react-native/movies.json')
+            .then((response) => response.json())
+            .then((responseJson) => {
+                // console.log('responseJson = ' + JSON.stringify(responseJson));
+                // title = responseJson.title;
+                setTimeout(() => {
+                    console.log("-----isLoading3=" +this.state.isLoading);
+                    this.setState({
+                        isLoading: false,
+                        movies: responseJson.movies,
+                        moviesData: responseJson.title,
+                    }, function () {
 
-        // console.log("-----isLoading1=" +this.state.isLoading);
-        // this.setState({
-        //     isLoading: true
-        // }, () => {
-        //     console.log("-----isLoading2=" +this.state.isLoading);
-        //     fetch('https://facebook.github.io/react-native/movies.json')
-        //     .then((response) => response.json())
-        //     .then((responseJson) => {
-        //         // console.log('responseJson = ' + JSON.stringify(responseJson));
-        //         // title = responseJson.title;
-        //         setTimeout(() => {
-        //             console.log("-----isLoading3=" +this.state.isLoading);
-        //             this.setState({
-        //                 isLoading: false,
-        //                 movies: responseJson.movies,
-        //                 moviesData: responseJson.title,
-        //             }, function () {
-
-        //             });
-        //         }, 2000) 
-        //     })
-        //     .catch((error) => {
-        //         console.log(error);
-        //     });
-        // })
-        // console.log("-----isLoading4=" +this.state.isLoading);
+                    });
+                }, 2000) 
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+        })
+        console.log("-----isLoading4=" +this.state.isLoading);
+        */
 
         console.log("-----isLoading1=" + this.state.isLoading);
         this.setState({ isLoading: true })
