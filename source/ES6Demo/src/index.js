@@ -94,7 +94,7 @@ function d() {
 // 对象
 {
 
-  /*
+
   {
     // 简写属性初始值
     // ES5
@@ -111,7 +111,6 @@ function d() {
     str = "A";
     num = 20;
     // ES5
-    // TODO:
     obj = {
       str: str,
       num: num
@@ -119,21 +118,25 @@ function d() {
     console.log(obj); // {str: "A", num: 20}
 
     // ES6
-    // TODO: obj vs var
+    // obj vs var
     obj6 = { str, num };
     console.log(obj6); // {str: "A", num: 20}
-  }*/
+  }
 
 
-  /*
+
   // 简写对象方法
   // ES5
   const obj2 = {
     id: 1,
-    // TODO:
     printId: function () {
       console.log(this.id);
     }
+    // 等价于
+    // var printId2 = function(x, y){ // printId2(1,2)
+    // }
+    // function printId2(x, y)    {
+    // }
   }
   console.log(obj2);
   obj2.printId(); // 1
@@ -143,12 +146,13 @@ function d() {
     id: 1,
     printId() {
       console.log(obj2_6.id);
+      console.log(this.id);
     }
   }
   console.log(obj2_6);
   obj2_6.printId();  // 1
 
-  */
+
 
 }
 
@@ -168,5 +172,5 @@ function d() {
   console.log(`Hi, ${name}`); // Hi, C
 
   let x = 2, y = 30;
-  console.log( `${x} * ${y} =  ${x*y}`) // 2 * 30 =  60
+  console.log(`${x} * ${y} =  ${x * y}`) // 2 * 30 =  60
 }

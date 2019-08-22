@@ -16,14 +16,11 @@
   console.log(c); // undefined
 
   // 使用嵌套数组进行解构
-  // TODO:
   // let [a, [[b], c]] = [1, [[2], 3]];
-
   // a;
   // b;
   // c;
 
-  // TODO:
   let [a, [[b], c]] = [1, [[2], 3]];
   console.log(a); // 1
   console.log(b); // 2
@@ -122,6 +119,7 @@
 
 // 函数参数的解构赋值:
 // 解构是将对象或者数组中的元素一个个提取出来，而赋值是给元素赋值，解构赋值的作用就是给对象或者数组的元素赋值。
+
 /*
 {
   // 在react的父子组件传递参数过程中，就使用到了解构赋值。
@@ -139,8 +137,8 @@
 
   // 函数参数默认值与解构赋值默认值结合使用
 
-  // TODO: 有形参吗？
-  function f({ x, y = 5 }) {
+  // 有形参是一个对象。使用时建立var x 和 y，值根据该对象设置
+  function f({ x, y = 5 }) { 
     console.log(x, y);
   }
   f({});            // undefined   5
@@ -156,13 +154,17 @@
   f({ x: 1, y: 2 });// 1    2
   f();              // undefined   5
 
-  function f(x, y = 5) { // 性能最好
+  function f(x, y = 5) { // 性能次之
     console.log(x, y);
   }
   f();            // undefined   5
   f(1);           // 1    5
   f(1, 2);        // 1    2
   f();            // undefined   5
+
+  function f2( x, y) {  // 性能最好
+    console.log(x, y);
+  }
 
   function fetch(url, { body = '', method = 'GET', headers = {} }) {
     console.log(method);
