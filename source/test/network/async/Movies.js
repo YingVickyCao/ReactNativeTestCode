@@ -29,6 +29,7 @@ export default class Movies extends Component {
     // }
 
     _requestContent = () => {
+
         // console.log("-----isLoading1=" +this.state.isLoading);
         // this.setState({
         //     isLoading: true
@@ -43,8 +44,8 @@ export default class Movies extends Component {
         //             console.log("-----isLoading3=" +this.state.isLoading);
         //             this.setState({
         //                 isLoading: false,
-                        // movies: responseJson.movies,
-                        // moviesData: responseJson.title,
+        //                 movies: responseJson.movies,
+        //                 moviesData: responseJson.title,
         //             }, function () {
 
         //             });
