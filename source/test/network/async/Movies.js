@@ -7,7 +7,7 @@ export default class Movies extends Component {
 
         this.state = {
             isLoading: false,
-            isShowResult : false;
+            isShowResult : false,
             moviesData: 'test',
         }
         this.getMoviesByAsync = this.getMoviesByAsync.bind(this)
