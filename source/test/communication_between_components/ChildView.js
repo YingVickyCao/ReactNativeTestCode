@@ -1,1 +1,0 @@
-                justifyContent: 'center',

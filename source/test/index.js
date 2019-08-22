@@ -16,7 +16,8 @@ import {AppRegistry} from 'react-native';
 // import App from './myview/TestAlignItems';
 // import App from './myview/TestAlignSelf';
 
-import App from './communication_between_components/ParentView';
+// import App from './communication_between_components/parent_2_child/ParentView';
+import App from './communication_between_components/child_2_parent/ParentView';
 
 import {name as appName} from './app.json';
 

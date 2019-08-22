@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import ChildComponent from "./ChildView";
+//  import 的是Component，而不是定义Component的js文件
 
 export default class ParentComponent extends Component {
     render() {

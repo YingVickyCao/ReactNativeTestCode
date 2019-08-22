@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { TouchableOpacity, Text } from 'react-native'
 
 export default class ChildComponent extends Component {   
-0
     render() {
         const { childData } = this.props;
         // 等价于
