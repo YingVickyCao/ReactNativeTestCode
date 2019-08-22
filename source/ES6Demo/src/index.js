@@ -145,7 +145,6 @@ function d() {
   const obj2_6 = {
     id: 1,
     printId() {
-      console.log(obj2_6.id);
       console.log(this.id);
     }
   }
