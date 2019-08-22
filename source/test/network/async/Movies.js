@@ -7,8 +7,10 @@ export default class Movies extends Component {
 
         this.state = {
             isLoading: false,
+            isShowResult : false;
             moviesData: 'test',
         }
+        this.getMoviesByAsync = this.getMoviesByAsync.bind(this)
     }
     /*
     function getMoviesByAsync() {
@@ -29,11 +31,11 @@ export default class Movies extends Component {
     getMoviesByAsync() {
         this.setState({
             isLoading: true,
-        }
+        })
         return fetch('https://facebook.github.io/react-native/movies.json')
             .then((response) => response.json())
             .then((responseJson) => {
-                console.log(responseJson);
+                console.log('responseJson = ' + JSON.stringify(responseJson));
                 title = responseJson.title;
                 this.setState({
                     isLoading: false,
@@ -42,7 +44,7 @@ export default class Movies extends Component {
                 }, () => {
                     return this._getTitle(this.state.moviesData)
                 });
-                alert(responseJson.movies)
+                // alert(responseJson.movies)
             })
             .catch((error) => {
                 console.log(error);
@@ -50,20 +52,26 @@ export default class Movies extends Component {
     }
 
     render() {
-        if (this.state.isLoading) {
-            return (<View style={{ flex: 1, padding: 20 }}>
-                <ProgressBarAndroid />
-            </View>)
-        }
+        // if (this.state.isLoading) {
+        //     return (<View style={{ flex: 1, padding: 20 }}>
+        //         <ProgressBarAndroid />
+        //     </View>)
+        // }
 
         return (<View style={{ flex: 1, padding: 20 }} >
             <Button onPress={this.getMoviesByAsync} title="Request movies data" color="#841584">
             </Button>
+
+            {this.state.isLoading ? (<View style={{ flex: 1, padding: 20 }}>
+                <ProgressBarAndroid />
+            </View>) : 
             <Text style={{ color: 'black', backgroundColor: '#ff0000' }}>
-                {/* {setTimeout(()=>this.state.moviesData,3000) } */}
-                {/* {this._getTitle(this.state.moviesData)} */}
-                {title}
-            </Text>
+            {/* {setTimeout(()=>this.state.moviesData,3000) } */}
+            {/* {this._getTitle(this.state.moviesData)} */}
+            {title}
+            </Text>}
+
+            
         </View>);
     }
 }
