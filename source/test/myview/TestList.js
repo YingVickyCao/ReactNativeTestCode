@@ -4,6 +4,7 @@ import { FlatList, View, Text, StyleSheet } from 'react-native'
 export default class ListComponent extends Component {
     render() {
         //  let， error
+        // 可以是任意名字，例如key 
         var datas = [
             { key: "1" },
             { key: "2" },
