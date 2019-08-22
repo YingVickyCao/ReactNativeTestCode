@@ -66,8 +66,6 @@ export default class Movies extends Component {
                 <ProgressBarAndroid />
             </View>) : 
             <Text style={{ color: 'black', backgroundColor: '#ff0000' }}>
-            {/* {setTimeout(()=>this.state.moviesData,3000) } */}
-            {/* {this._getTitle(this.state.moviesData)} */}
             {title}
             </Text>}
 
