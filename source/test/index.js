@@ -3,7 +3,7 @@
  */
 
 import {AppRegistry} from 'react-native';
-import App from './App';
+// import App from './App';
 // import App from './myview/TestStyle';
 // import App from './myview/TestProps';
 // import App from './myview/CustomView';
@@ -15,6 +15,8 @@ import App from './App';
 // import App from './myview/TestJustifyContent';
 // import App from './myview/TestAlignItems';
 // import App from './myview/TestAlignSelf';
+
+import App from './communication_between_components/ParentView';
 
 import {name as appName} from './app.json';
 
