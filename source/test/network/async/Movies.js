@@ -8,7 +8,7 @@ export default class Movies extends Component {
         this.state = {
             isLoading: false,
             // isShowResult: false,
-            // moviesData: '',
+            moviesData: '',
         }
     }
     /*
@@ -28,49 +28,56 @@ export default class Movies extends Component {
     // }
 
     _requestContent = () => {
-        this.setState({
-            isLoading: true
-        }, () => {
-            console.log("-----isLoading2=" +this.state.isLoading);
-            fetch('https://facebook.github.io/react-native/movies.json')
-            .then((response) => response.json())
-            .then((responseJson) => {
-                // console.log('responseJson = ' + JSON.stringify(responseJson));
-                // title = responseJson.title;
-                setTimeout(() => {
-                    this.setState({
-                        isLoading: false,
-                        // moviesData: responseJson.movies,
-                        // moviesData: responseJson.title,
-                    }, function () {
-    
-                    });
-                }, 2000)
-                
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-        })
-
-        console.log("-----isLoading=" +this.state.isLoading);
-        // this.setState({ isLoading: true })
-        // fetch('https://facebook.github.io/react-native/movies.json')
+        // console.log("-----isLoading1=" +this.state.isLoading);
+        // this.setState({
+        //     isLoading: true
+        // }, () => {
+        //     console.log("-----isLoading2=" +this.state.isLoading);
+        //     fetch('https://facebook.github.io/react-native/movies.json')
         //     .then((response) => response.json())
         //     .then((responseJson) => {
         //         // console.log('responseJson = ' + JSON.stringify(responseJson));
         //         // title = responseJson.title;
-        //         this.setState({
-        //             isLoading: false,
-        //             // moviesData: responseJson.movies,
-        //             // moviesData: responseJson.title,
-        //         }, function () {
+        //         setTimeout(() => {
+        //             console.log("-----isLoading3=" +this.state.isLoading);
+        //             this.setState({
+        //                 isLoading: false,
+        //                 // moviesData: responseJson.movies,
+        //                 moviesData: responseJson.title,
+        //             }, function () {
 
-        //         });
+        //             });
+        //         }, 2000) 
         //     })
         //     .catch((error) => {
         //         console.log(error);
         //     });
+        // })
+        // console.log("-----isLoading4=" +this.state.isLoading);
+
+        console.log("-----isLoading1=" + this.state.isLoading);
+        this.setState({ isLoading: true })
+        fetch('https://facebook.github.io/react-native/movies.json')
+            .then((response) => response.json())
+            .then((responseJson) => {
+                // console.log('responseJson = ' + JSON.stringify(responseJson));
+                // title = responseJson.title;
+                console.log("-----isLoading2=" + this.state.isLoading);
+                setTimeout(() => {
+                    console.log("-----isLoading3=" + this.state.isLoading);
+                    this.setState({
+                        isLoading: false,
+                        // moviesData: responseJson.movies,
+                        moviesData: responseJson.title,
+                    }, function () {
+
+                    });
+                }, 2000)
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+        console.log("-----isLoading4=" + this.state.isLoading);
     }
 
     _renderButton() {
@@ -82,7 +89,7 @@ export default class Movies extends Component {
     }
 
     _renderContent() {
-        return <Text style={{ color: 'black' }}>Test</Text>
+        return <Text style={{ color: 'black' }}>{this.state.moviesData}</Text>
     }
 
     render() {
