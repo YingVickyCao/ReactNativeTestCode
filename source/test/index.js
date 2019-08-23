@@ -24,7 +24,8 @@ import {AppRegistry} from 'react-native';
 // import App from './myview/TestList'
 // import App from './myview/TestSectionList'
 // import App from './myview/TestScrollView'
-import App from './myview/TestButton'
+// import App from './myview/TestButton'
+import App from './myview/TestTouchable'
 
 import {name as appName} from './app.json';
 AppRegistry.registerComponent(appName, () => App);
