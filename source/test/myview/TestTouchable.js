@@ -9,40 +9,44 @@ export default class TestTouchableViews extends Component {
     render() {
         return (
             <View style={styles.container}>
-                {/* <TouchableHighlight style={[styles.btn, {flex:1, backgroundColor: 'red'}]} onPress={this._onPressBtn}>
+                <TouchableHighlight style={styles.btn} onPress={this._onPressBtn} underlayColor='#EB984E'>
                     <Text style={styles.btnText}> Highlight </Text>
                 </TouchableHighlight>
 
-                <View style={{flex:1, backgroundColor:'#ff00ff', justifyContent:'center', alignItems: "center",}}>
-                    <TouchableNativeFeedback  onPress={this._onPressBtn}>
+                
+                {/* <TouchableNativeFeedback onPress={this._onPressBtn} background={TouchableNativeFeedback.SelectableBackgroundBorderless()}> */}
+                <TouchableNativeFeedback onPress={this._onPressBtn} background={TouchableNativeFeedback.SelectableBackground()}>
+                    <View style={[styles.btn, { backgroundColor: 'red' }]}>
+                        <Text> Feedback </Text>
+                    </View>
+                </TouchableNativeFeedback>
+
+                <TouchableOpacity style={styles.btn} onPress={this._onPressBtn}>
+                    <Text style={styles.btnText}> Opatity </Text>
+                </TouchableOpacity>
+
+                <TouchableWithoutFeedback style={styles.btn} onPress={this._onPressBtn}>
+                    <View style={[styles.btn, { backgroundColor: 'red' }]}>
                         <Text style={styles.btnText}> Feedback </Text>
-                    </TouchableNativeFeedback>
-                </View>
-
-                <TouchableOpacity style={{flex:1, backgroundColor: '#5DCA5C', justifyContent:'center', alignItems: "center"}} onPress={this._onPressBtn}>
-                    <Text style={styles.btnText}> Opatity </Text>
-                </TouchableOpacity> */}
-
-                <TouchableOpacity style={styles.btn} onPress={this._onPressBtn}>
-                    <Text style={styles.btnText}> Opatity </Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity style={styles.btn} onPress={this._onPressBtn}>
-                    <Text style={styles.btnText}> Opatity </Text>
-                </TouchableOpacity>
+                    </View>
+                </TouchableWithoutFeedback>
             </View >
         )
     }
 }
 
+/**
+ * TouchableNativeFeedback: Android only
+ * TouchableWithoutFeedback: Depressed
+ */
 const styles = StyleSheet.create({
     container: {
         // flex: 1, // 居中，因为height = match_parent
-        flexDirection:'column',
+        flexDirection: 'column',
         justifyContent: 'center',
         alignItems: "center",
         width: '100%',
-        backgroundColor:'#D5DBDB',
+        backgroundColor: '#D5DBDB',
     },
     btn: {
         justifyContent: 'center',
