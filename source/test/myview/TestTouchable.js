@@ -9,7 +9,7 @@ export default class TestTouchableViews extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <TouchableHighlight style={[styles.btn, {flex:1, backgroundColor: 'red'}]} onPress={this._onPressBtn}>
+                {/* <TouchableHighlight style={[styles.btn, {flex:1, backgroundColor: 'red'}]} onPress={this._onPressBtn}>
                     <Text style={styles.btnText}> Highlight </Text>
                 </TouchableHighlight>
 
@@ -21,13 +21,15 @@ export default class TestTouchableViews extends Component {
 
                 <TouchableOpacity style={{flex:1, backgroundColor: '#5DCA5C', justifyContent:'center', alignItems: "center"}} onPress={this._onPressBtn}>
                     <Text style={styles.btnText}> Opatity </Text>
+                </TouchableOpacity> */}
+
+                <TouchableOpacity style={styles.btn} onPress={this._onPressBtn}>
+                    <Text style={styles.btnText}> Opatity </Text>
                 </TouchableOpacity>
 
-                {/* <TouchableWithoutFeedback onPress={this._onPressBtn}>
-                    <View style={[styles.btn, {flex:4}]}>
-                        <Text style={styles.btnText}> WithoutFeedback </Text>
-                    </View>
-                </TouchableWithoutFeedback> */}
+                <TouchableOpacity style={styles.btn} onPress={this._onPressBtn}>
+                    <Text style={styles.btnText}> Opatity </Text>
+                </TouchableOpacity>
             </View >
         )
     }
@@ -35,27 +37,27 @@ export default class TestTouchableViews extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        flexDirection: 'column'
+        // flex: 1, // 居中，因为height = match_parent
+        flexDirection:'column',
+        justifyContent: 'center',
+        alignItems: "center",
+        width: '100%',
+        backgroundColor:'#D5DBDB',
     },
-    // btn: {
-    //     // flex: 2,
-    //     // width: 200,
-    //     justifyContent:'center',
-    //     // minHeight: 100,
-    //     height: 100,
-    //     alignItems: "center",
-    //     textAlign: 'center',
-    //     marginBottom: 10,
-    //     // backgroundColor: '#5ACA5C',
-    // },
-
-    //  TODO:居中显示文字
+    btn: {
+        justifyContent: 'center',
+        alignItems: "center",
+        backgroundColor: '#5DCA5C',
+        width: 200,
+        height: 100,
+        justifyContent: 'center',
+        alignItems: "center",
+        backgroundColor: '#5DCA5C',
+        marginBottom: 10,
+        width: '50%',
+    },
     btnText: {
         color: 'black'
     },
-    btn: {
-        justifyContent:'center', 
-        alignItems: "center",
-    }
+
 })
