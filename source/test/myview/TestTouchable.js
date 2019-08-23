@@ -9,29 +9,25 @@ export default class TestTouchableViews extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <TouchableHighlight onPress={this._onPressBtn}>
-                    <View style={styles.btn}>
-                        <Text style={styles.btnText}> Highlight </Text>
-                    </View>
+                <TouchableHighlight style={[styles.btn, {flex:1, backgroundColor: 'red'}]} onPress={this._onPressBtn}>
+                    <Text style={styles.btnText}> Highlight </Text>
                 </TouchableHighlight>
 
-                <TouchableNativeFeedback onPress={this._onPressBtn}>
-                    <View style={styles.btn}>
+                <View style={{flex:1, backgroundColor:'#ff00ff', justifyContent:'center', alignItems: "center",}}>
+                    <TouchableNativeFeedback  onPress={this._onPressBtn}>
                         <Text style={styles.btnText}> Feedback </Text>
-                    </View>
-                </TouchableNativeFeedback>
+                    </TouchableNativeFeedback>
+                </View>
 
-                <TouchableOpacity style={this._onPressBtn}>
-                    <View style={styles.btn}>
-                        <Text style={styles.btnText}> Opatity </Text>
-                    </View>
+                <TouchableOpacity style={{flex:1, backgroundColor: '#5DCA5C', justifyContent:'center', alignItems: "center"}} onPress={this._onPressBtn}>
+                    <Text style={styles.btnText}> Opatity </Text>
                 </TouchableOpacity>
 
-                <TouchableWithoutFeedback onPress={this._onPressBtn}>
-                    <View style={styles.btn}>
+                {/* <TouchableWithoutFeedback onPress={this._onPressBtn}>
+                    <View style={[styles.btn, {flex:4}]}>
                         <Text style={styles.btnText}> WithoutFeedback </Text>
                     </View>
-                </TouchableWithoutFeedback>
+                </TouchableWithoutFeedback> */}
             </View >
         )
     }
@@ -40,22 +36,26 @@ export default class TestTouchableViews extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignContent: 'center',
-        alignItems: 'center',
+        flexDirection: 'column'
     },
-    btn: {
-        flex: 0,
-        minWidth: 200,
-        minHeight: 100,
-        alignItems: "center",
-        textAlign: 'center',
-        marginBottom: 10,
-        backgroundColor: '#5ACA5C',
-    },
+    // btn: {
+    //     // flex: 2,
+    //     // width: 200,
+    //     justifyContent:'center',
+    //     // minHeight: 100,
+    //     height: 100,
+    //     alignItems: "center",
+    //     textAlign: 'center',
+    //     marginBottom: 10,
+    //     // backgroundColor: '#5ACA5C',
+    // },
 
     //  TODO:居中显示文字
     btnText: {
-        textAlign: "center",
-        color: '#000',
+        color: 'black'
+    },
+    btn: {
+        justifyContent:'center', 
+        alignItems: "center",
     }
 })
