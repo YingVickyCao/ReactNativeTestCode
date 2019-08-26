@@ -67,7 +67,7 @@ export default class Movies extends Component {
                 // console.log('responseJson = ' + JSON.stringify(responseJson));
                 // title = responseJson.title;
                 console.log("-----isLoading2=" + this.state.isLoading);
-                setTimeout(() => {
+                // setTimeout(() => {
                     console.log("-----isLoading3=" + this.state.isLoading);
                     this.setState({
                         isLoading: false,
@@ -76,7 +76,7 @@ export default class Movies extends Component {
                     }, function () {
 
                     });
-                }, 2000)
+                // }, 2000)
             })
             .catch((error) => {
                 console.log(error);
