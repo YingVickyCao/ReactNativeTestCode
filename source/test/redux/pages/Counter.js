@@ -1,7 +1,6 @@
 
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
-import { Provider } from 'react-redux';
 import store from '../store/index'
 // import { connect } from 'react-redux'
 import { increment, decrement } from '../action/counter'
