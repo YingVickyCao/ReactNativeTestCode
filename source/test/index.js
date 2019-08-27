@@ -3,7 +3,7 @@
  */
 
 import {AppRegistry} from 'react-native';
-// import App from './App';
+import App from './App';
 // import App from './myview/TestStyle';
 // import App from './myview/TestProps';
 // import App from './myview/CustomView';
@@ -20,7 +20,7 @@ import {AppRegistry} from 'react-native';
 // import App from './communication_between_components/child_2_parent/ParentView';
 // import App from './network/TestImage'
 
-import App from './network/async/Movies'
+// import App from './network/async/Movies'
 // import App from './myview/TestList'
 // import App from './myview/TestSectionList'
 // import App from './myview/TestScrollView'
