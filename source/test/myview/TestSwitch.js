@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Switch, View } from 'react-native'
+import { Switch, View, StyleSheet } from 'react-native'
 
 export default class TestSwitch extends Component {
     constructor(props) {
@@ -13,25 +13,22 @@ export default class TestSwitch extends Component {
 
     render() {
         return (
-            <View style={{ marginTop: 30, alignItems: "center" }}>
-                <Switch trackColor='yellow' thumbColor="green" value={this.state.isOn}
+            <View style={styles.container}>
+                <Switch trackColor='#00ff00' thumbColor="#ff0000" value={this.state.isOn} ios_backgroundColor="#0000ff"
                     onValueChange={(value) => {
                         this.setState({ isOn: value })
                     }} />
             </View>
         );
     }
-
     // TODO:
-    // _onValueChange4Switch() {
-    //     if (this.state.isOn) {
-    //         this.setState({
-    //             isOn: false,
-    //         })
-    //     } else {
-    //         this.setState({
-    //             isOn: true,
-    //         })
-    //     }
-    // }
+    _onValueChange4Switch(value) {
+        this.setState({ isOn: value })
+    }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        marginTop: 30, alignItems: "center"
+    },
+});
