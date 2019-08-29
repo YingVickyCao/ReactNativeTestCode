@@ -13,27 +13,31 @@ export default class TestPicker extends Picker {
 
     render() {
         return (
-            <Picker
-                style={styles.picker}
-                selectedValue={
-                    this.state.num
-                }
-                onValueChange={(itemValue, itemIndex) => this.setState({ num: itemValue })}
-                mode={"dropdown"}
-                prompt={"Num"}
-            >
-                <Picker.Item label="a" value="A"></Picker.Item>
-                <Picker.Item label="b" value="B"></Picker.Item>
-                <Picker.Item label="c" value="C"></Picker.Item>
-                <Picker.Item label="d" value="D"></Picker.Item>
-                <Picker.Item label="e" value="E"></Picker.Item>
-            </Picker >
+            <View style={styles.container}>
+                <Picker
+                    style={styles.picker}
+                    selectedValue={
+                        this.state.num
+                    }
+                    onValueChange={(itemValue, itemIndex) => this.setState({ num: itemValue })}
+                    mode={"dropdown"}
+                    prompt={"Num"}
+                >
+                    <Picker.Item label="a" value="A"></Picker.Item>
+                    <Picker.Item label="b" value="B"></Picker.Item>
+                    <Picker.Item label="c" value="C"></Picker.Item>
+                    <Picker.Item label="d" value="D"></Picker.Item>
+                    <Picker.Item label="e" value="E" backgroundColor="yellow"></Picker.Item>
+                </Picker >
+            </View>
         );
     }
 }
 
 const styles = StyleSheet.create({
     container: {
+        backgroundColor: 'green',
+        margin: 20,
 
     },
     picker: {
