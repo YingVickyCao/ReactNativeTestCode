@@ -6,6 +6,7 @@ import store from '../store/index'
 import { increment, decrement } from '../action/counter'
 
 export default class Counter extends Component {
+    // Mounting
     constructor(props) {
         super(props)
         this.state = store.getState();
@@ -13,17 +14,40 @@ export default class Counter extends Component {
             console.log(store.getState())
             this.setState(store.getState())
         })
+        console.log("Mounting:constructor");
+    }
+    componentDidMount() {
+        console.log("Mounting:componentDidMount");
+    }
+    // Updating
+    shouldComponentUpdate() {
+        console.log("Updating:shouldComponentUpdate");
+        return true;
+    }
+    // getSnapshotBeforeUpdate() {
+    //     console.log("Updating:getSnapshotBeforeUpdate");
+    // }
+
+    componentWillMount(){
+        console.log("Mounting:componentWillMount");
+    }
+    componentDidUpdate() {
+        console.log("Updating:componentDidUpdate");
     }
 
-    _onPress4Increment() {
-        store.dispatch(increment())
+    // Unmounting
+    componentWillUnmount() {
+        console.log("Unmounting:componentWillUnmount");
+    }
+    // Error Handling
+    componentDidCatch() {
+        console.log("Error Handling:componentDidCatch");
     }
 
-    _onPress4Decrement() {
-        store.dispatch(decrement())
-    }
-
+    // Mounting + Updating 
     render() {
+        console.log("Mounting + Updating:render");
+
         return (
 
             <View style={styles.container}>
@@ -46,6 +70,13 @@ export default class Counter extends Component {
             </View >
 
         );
+    }
+    _onPress4Increment() {
+        store.dispatch(increment())
+    }
+
+    _onPress4Decrement() {
+        store.dispatch(decrement())
     }
 }
 
