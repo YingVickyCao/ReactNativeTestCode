@@ -76,29 +76,20 @@ function test_reduce() {
 }
 
 function test_get() {
-  // var object = {
-  //   'a': {
-  //     'b': {
-  //       'c': 3
-  //     }
-  //   }
-  // }
-  // var type = _.get(object, 'b.c', null  );
-  // console.log(type);
-
   var object = { 'a': [{ 'b': { 'c': 3 } }] };
- 
   //  FIXED_ERROR:Uncaught TypeError: _.remove is not a function.
   // https://stackoverflow.com/questions/56299044/lodash-uncaught-typeerror-remove-is-not-a-function
-  _.get(object, 'a[0].b.c');
-  
-  console.log(_.isEmpty(object));
-  // => 3
-   
-  _.get(object, ['a', '0', 'b', 'c']);
-  // => 3
-   
-  _.get(object, 'a.b.c', 'default');
-  // => 'default'
+  console.log(_.get(object, 'a[0].b.c')); // => 3
+  console.log(_.get(object, ['a', '0', 'b', 'c']));  // => 3
+  console.log(_.get(object, 'a.b.c', 'default')); // => 'default'
 
+  var object2 = {
+    'a': {
+      'b': {
+        'c': 3
+      }
+    }
+  }
+  console.log(_.get(object2, 'a.b', '' )); // {c:3}
+  console.log(_.get(object2, 'a.b.c', '' )); // 3
 }
