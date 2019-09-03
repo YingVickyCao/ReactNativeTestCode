@@ -12,8 +12,8 @@ function test() {
   // test_foreach([1, 2, 3]);
   // test_map([1, 2, 3]);
   // test_map_4_loadash([1, 2, 3]);
-  // test_reduce();
-  test_get();
+  test_reduce();
+  // test_get();
 }
 
 /*
@@ -73,6 +73,7 @@ function test_reduce() {
     console.log("item=" + item + ",n1=" + item.n1 + ",n2=" + item.n2 + ",memo=" + memo); return memo;
   }, memo)
   console.log("result=" + result);
+  console.log("memo=" + memo); // memo = result
 }
 
 function test_get() {
