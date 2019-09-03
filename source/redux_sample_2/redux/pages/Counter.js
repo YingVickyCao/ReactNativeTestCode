@@ -16,38 +16,8 @@ export default class Counter extends Component {
         })
         console.log("Mounting:constructor");
     }
-    componentDidMount() {
-        console.log("Mounting:componentDidMount");
-    }
-    // Updating
-    shouldComponentUpdate() {
-        console.log("Updating:shouldComponentUpdate");
-        return true;
-    }
-    // getSnapshotBeforeUpdate() {
-    //     console.log("Updating:getSnapshotBeforeUpdate");
-    // }
-
-    componentWillMount(){
-        console.log("Mounting:componentWillMount");
-    }
-    componentDidUpdate() {
-        console.log("Updating:componentDidUpdate");
-    }
-
-    // Unmounting
-    componentWillUnmount() {
-        console.log("Unmounting:componentWillUnmount");
-    }
-    // Error Handling
-    componentDidCatch() {
-        console.log("Error Handling:componentDidCatch");
-    }
-
-    // Mounting + Updating 
     render() {
-        console.log("Mounting + Updating:render");
-
+        console.log("render()");
         return (
 
             <View style={styles.container}>

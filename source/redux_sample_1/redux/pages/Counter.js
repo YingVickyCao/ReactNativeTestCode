@@ -14,40 +14,9 @@ export default class Counter extends Component {
             console.log(store.getState())
             this.setState(store.getState())
         })
-        console.log("Mounting:constructor");
     }
-    componentDidMount() {
-        console.log("Mounting:componentDidMount");
-    }
-    // Updating
-    shouldComponentUpdate() {
-        console.log("Updating:shouldComponentUpdate");
-        return true;
-    }
-    // getSnapshotBeforeUpdate() {
-    //     console.log("Updating:getSnapshotBeforeUpdate");
-    // }
-
-    componentWillMount(){
-        console.log("Mounting:componentWillMount");
-    }
-    componentDidUpdate() {
-        console.log("Updating:componentDidUpdate");
-    }
-
-    // Unmounting
-    componentWillUnmount() {
-        console.log("Unmounting:componentWillUnmount");
-    }
-    // Error Handling
-    componentDidCatch() {
-        console.log("Error Handling:componentDidCatch");
-    }
-
     // Mounting + Updating 
     render() {
-        console.log("Mounting + Updating:render");
-
         return (
 
             <View style={styles.container}>
@@ -96,7 +65,7 @@ const styles = StyleSheet.create({
     }
     , num: {
         fontSize: 50,
-        color: 'green',
+        color: '#00ff00',
         paddingHorizontal: 20
     }
 });
