@@ -1,6 +1,7 @@
 // import _ from 'lodash'
 
 // var _ = require('lodash');
+// var _ = require('lodash/core');
 
 // var s = document.createElement('script');
 // s.src ='https://raw.githubusercontent.com/lodash/lodash/4.17.15-npm/core.js';
@@ -11,7 +12,8 @@ function test() {
   // test_foreach([1, 2, 3]);
   // test_map([1, 2, 3]);
   // test_map_4_loadash([1, 2, 3]);
-  test_reduce();
+  // test_reduce();
+  test_get();
 }
 
 /*
@@ -68,7 +70,35 @@ function test_reduce() {
   var memo = [];
   var result = _.reduce(collection, (memo, item, index) => {
     memo.push(item.n1 + item.n2)
-    console.log("item=" + item + ",n1=" + item.n1 + "n2=" + item.n2 + ",memo=" + memo); return memo;
+    console.log("item=" + item + ",n1=" + item.n1 + ",n2=" + item.n2 + ",memo=" + memo); return memo;
   }, memo)
   console.log("result=" + result);
+}
+
+function test_get() {
+  // var object = {
+  //   'a': {
+  //     'b': {
+  //       'c': 3
+  //     }
+  //   }
+  // }
+  // var type = _.get(object, 'b.c', null  );
+  // console.log(type);
+
+  var object = { 'a': [{ 'b': { 'c': 3 } }] };
+ 
+  //  FIXED_ERROR:Uncaught TypeError: _.remove is not a function.
+  // https://stackoverflow.com/questions/56299044/lodash-uncaught-typeerror-remove-is-not-a-function
+  _.get(object, 'a[0].b.c');
+  
+  console.log(_.isEmpty(object));
+  // => 3
+   
+  _.get(object, ['a', '0', 'b', 'c']);
+  // => 3
+   
+  _.get(object, 'a.b.c', 'default');
+  // => 'default'
+
 }
