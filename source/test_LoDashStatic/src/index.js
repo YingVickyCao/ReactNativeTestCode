@@ -1,16 +1,17 @@
-import _ from 'lodash'
+// import _ from 'lodash'
+
+// var _ = require('lodash');
 
 // var s = document.createElement('script');
 // s.src ='https://raw.githubusercontent.com/lodash/lodash/4.17.15-npm/core.js';
 // document.getElementsByTagName('head')[0].appendChild(s);
 
-// window.loadsh = _;
-// window._=_;
-
 function test() {
-  test_foreach([1, 2, 3]);
-  test_map([1, 2, 3]);
-  test_map_4_loadash([1, 2, 3]);
+  // alert("hello world")
+  // test_foreach([1, 2, 3]);
+  // test_map([1, 2, 3]);
+  // test_map_4_loadash([1, 2, 3]);
+  test_reduce();
 }
 
 /*
@@ -41,9 +42,9 @@ function test_map(arr) {
 }
 
 function test_map_4_loadash(arr) {
-  console.log(arr); 
-  _.map(arr, item => item * item);
   console.log(arr);
+  var a = _.map(arr, item => { item * item });
+  console.log(a);
 }
 
 function test_foreach(arr) {
@@ -55,4 +56,19 @@ function test_foreach(arr) {
   console.log(a);   // [1, 4, 9]
   console.log(arr); // [1, 2, 3]
   return a;
+}
+
+function test_reduce() {
+  var collection = [
+    { n1: 1, n2: 9 },
+    { n1: 2, n2: 8 },
+    { n1: 3, n2: 7 }
+  ];
+
+  var memo = [];
+  var result = _.reduce(collection, (memo, item, index) => {
+    memo.push(item.n1 + item.n2)
+    console.log("item=" + item + ",n1=" + item.n1 + "n2=" + item.n2 + ",memo=" + memo); return memo;
+  }, memo)
+  console.log("result=" + result);
 }
