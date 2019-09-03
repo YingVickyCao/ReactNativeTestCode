@@ -173,3 +173,101 @@ function d() {
   let x = 2, y = 30;
   console.log(`${x} * ${y} =  ${x * y}`) // 2 * 30 =  60
 }
+
+
+// object.assign()
+{
+  {
+    // 拷贝有副作用
+    const target = { a: 1 };
+    const source1 = { b: 2 };
+    const source2 = { c: 3 };
+    const result = Object.assign(target, source1, source2);
+    console.log("target=" + JSON.stringify(target));   // {"a":1,"b":2,"c":3}
+    console.log("source1=" + JSON.stringify(source1)); // { "b":2}
+    console.log("source2=" + JSON.stringify(source2)); // { c: 3 }
+    console.log("result=" + JSON.stringify(result));   // {"a":1,"b":2,"c":3}
+    console.log("result ?= target:" + target === result);   // false
+  }
+
+  {
+    // 拷贝没有副作用
+    const target = { a: 1, };
+    const source1 = { b: 2 };
+    const source2 = { c: 3 };
+    const result = Object.assign({}, source1, source2);
+    console.log("target=" + JSON.stringify(target));   // {"a":1}
+    console.log("source1=" + JSON.stringify(source1)); // { "b":2,"c":2}
+    console.log("source2=" + JSON.stringify(source2)); // {"c":3}
+    console.log("source2=" + JSON.stringify(result));  // {"b":2,"c":3}
+    console.log("result ?= target:" + target === result);   // false
+  }
+
+  {
+    // Object.assign是浅拷贝
+    const source = { a: { b: 2 } };
+    const result = Object.assign({}, source);
+    console.log("source1=" + JSON.stringify(source)); // { a: { b: 2 } }
+    console.log("result=" + JSON.stringify(result));  // { a: { b: 2 } }
+    result.a.b = 20;
+    console.log("source1=" + JSON.stringify(source)); // { a: { b: 20 } }
+    console.log("result=" + JSON.stringify(result));  // { a: { b: 20 } }
+  }
+
+  {
+    // 嵌套对象，一旦存在同名属性，直接复制，而非add
+    const target = { a: { b: 2, c: 3 } };
+    const source = { a: { b: "A" } };
+    const result = Object.assign(target, source);
+
+    console.log("target=" + JSON.stringify(target)); //{ a: { b: "A" } }
+    console.log("source=" + JSON.stringify(source)); // { a: { b: "A" } }
+    console.log("result=" + JSON.stringify(result));  // { a: { b: "A" } }
+
+    console.log("source?=target:" + source == target); // false
+    console.log("source?=result:" + source == result); // false
+
+    result.a.b = 20;
+
+    console.log("target=" + JSON.stringify(target)); // { a: { b: 20 } }
+    console.log("source=" + JSON.stringify(source)); // { a: { b: 20 } }
+    console.log("result=" + JSON.stringify(result)); // { a: { b: 20 } }
+  }
+
+  {
+    // 数组 被视为对象。key=0,1,2
+    console.log(Object.assign([1, 2, 3], [4, 5])); // [4, 5, 3]
+  }
+
+  {
+    // 多个源对象有同名属性，后面属性覆盖前面
+    // 目标对象与源对象有同名属性，后面属性覆盖前面
+    const target = { a: 1, b: 1 };
+    const source1 = { b: 2, c: 2 };
+    const source2 = { c: 3 };
+    Object.assign(target, source1, source2);
+    console.log("target=" + JSON.stringify(target));   // "a":1,"b":2,"c":3}
+    console.log("source1=" + JSON.stringify(source1)); // { "b":2,"c":2}
+    console.log("source2=" + JSON.stringify(source2)); // {"c":3}
+  }
+
+  {
+    // 只有一个参数，直接返回
+    const target = { a: 1 };
+    Object.assign(target) === target; // true.
+  }
+
+  {
+    // 参数不是对象，先转换为对象，再返回
+    Object.assign(2);    // Number {2}    
+
+    // undefined 和 null，不能转换成对象. ERROR:Uncaught TypeError: Cannot convert undefined or null to object
+    Object.assign(undefined);
+    Object.assign(null);
+
+    // 非对象出现在源对象位置，该参数先转换成对象，如果无法转成，则跳过.故 nul 和 undefined 不报错。
+    Object.assign(2, 3, 5); // Number {2}
+    Object.assign(2, undefined, 5); // Number {2}
+    Object.assign(2, null, 5); // Number {2}
+  }
+}
