@@ -14,9 +14,9 @@ function test() {
   // test_map_4_loadash([1, 2, 3]);
   // test_reduce();
   // test_get();
-  // test_chain();
+  test_chain();
   // test_head();
-  test_tail();
+  // test_tail();
 }
 
 /*
@@ -100,32 +100,40 @@ function test_get() {
 
 
 function test_chain() {
+  // minBy,sortBy,map,head,tail
   var users = [
-    { 'user': 'A', 'score': 10 },
-    { 'user': 'B', 'score': 100 },
+    { 'user': 'A', 'score': 100 },
+    { 'user': 'B', 'score': 20 },
     { 'user': 'C', 'score': 90 }
   ]
-  var minObj = _
+  var first = _
     .chain(users)
-    .sortBy('score')
+    .sortBy('score') // B C A
     .map(function (item) {
       console.log(item.user + "'s score is " + item.score)
+      return item;
     })
     .head()
     .value();
+  console.log("first=" + JSON.stringify(first));  // {"user":"B","score":20}
 
-  console.log("min=" + minObj);
-
-  var max = _
+  var min = _
     .chain(users)
     .sortBy('score')
+    .minBy('score');
+  console.log("min=" + JSON.stringify(min));  // {"user":"B","score":20}
+
+  var tail = _
+    .chain(users)
+    .sortBy('score') 
     .map(function (item) {
       console.log(item.user + "'s score is " + item.score)
+      return item.user + "'s score is " + item.score;
     })
     .tail()
     .value();
 
-  console.log("max=" + max);
+  console.log("tail=" + tail);  // C's score is 90,A's score is 100
 }
 
 function test_head() {
