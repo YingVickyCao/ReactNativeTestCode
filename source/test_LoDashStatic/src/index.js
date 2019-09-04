@@ -117,15 +117,25 @@ function test_chain() {
     .value();
   console.log("first=" + JSON.stringify(first));  // {"user":"B","score":20}
 
+  const sortByScore = score => {
+    return score * 100;
+  }
   var min = _
     .chain(users)
-    .sortBy('score')
+    // .sortBy('score')
+    // .sortBy(function sortByScore(score) {
+    //   return score * 100;
+    // })
+    // .sortBy(score => {
+    //   return score * 100;
+    // })
+    .sortBy(sortByScore)
     .minBy('score');
   console.log("min=" + JSON.stringify(min));  // {"user":"B","score":20}
 
   var tail = _
     .chain(users)
-    .sortBy('score') 
+    .sortBy('score')
     .map(function (item) {
       console.log(item.user + "'s score is " + item.score)
       return item.user + "'s score is " + item.score;
