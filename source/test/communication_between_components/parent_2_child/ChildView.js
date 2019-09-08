@@ -1,21 +1,18 @@
 import React, { Component } from 'react'
-import { TouchableOpacity, Text } from 'react-native'
+import { View, Text } from 'react-native'
+import { styles } from '../CommunicationStyle';
 
-export default class ChildComponent extends Component {   
+export default class ChildComponent extends Component {
     render() {
         const { childData } = this.props;
         // 等价于
         // const childData = this.props.childData;
+
         return (
-            <TouchableOpacity style={{
-                width: 50,
-                height: 50,
-                backgroundColor: '#f00',
-                justifyContent: 'center',
-                alignItems: 'center'
-            }}>
-                <Text>{childData}</Text>
-            </TouchableOpacity>
-        )
+            <View style={styles.container_4_child}>
+                <Text style={styles.label}>Child</Text>
+                <Text style={styles.label}>{childData}</Text>
+            </View>
+        );
     }
 }

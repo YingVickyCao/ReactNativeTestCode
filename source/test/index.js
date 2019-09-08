@@ -30,7 +30,7 @@ import App from './communication_between_components/parent_2_child/ParentView';
 // import App from './myview/TestButton'
 // import App from './myview/TestTouchable'
 // import App from './redux/pages/login'
-import App from './redux/pages/Counter'
+// import App from './redux/pages/Counter'
 
 import { name as appName } from './app.json';
 AppRegistry.registerComponent(appName, () => App);
