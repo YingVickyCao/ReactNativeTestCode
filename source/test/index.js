@@ -19,7 +19,7 @@ import { AppRegistry } from 'react-native';
 // import App from './myview/TestPicker';
 // import App from './myview/TestProgress';
 
-// import App from './communication_between_components/parent_2_child/ParentView';
+import App from './communication_between_components/parent_2_child/ParentView';
 // import App from './communication_between_components/child_2_parent/ParentView';
 // import App from './network/TestImage'
 
