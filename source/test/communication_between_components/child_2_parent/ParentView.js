@@ -12,7 +12,7 @@ export default class ParentComponent extends Component {
 
     // PO: setState
     // good
-    handleChild = (value) => {
+    handleChildData = (value) => {
         console.log("ParentComponent,1," + this.state.dataFromChild)
         this.setState((prevState) => ({
             dataFromChild: value,
@@ -40,12 +40,13 @@ export default class ParentComponent extends Component {
         return (
             <View style={{
                 padding: 20,
-                marginTop: 10,
+                marginTop: 50,
                 backgroundColor: '#666',
                 alignItems: 'center'
             }}>
                 <Text>{dataFromChild}</Text>
-                <ChildComponent childData={dataFromChild} handleChild={this.handleChild}></ChildComponent>
+
+                <ChildComponent  handleChildData={this.handleChildData.bind(this)}></ChildComponent>
             </View >
         )
     }
