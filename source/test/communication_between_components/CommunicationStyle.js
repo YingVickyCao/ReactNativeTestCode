@@ -29,7 +29,7 @@ export const styles = StyleSheet.create({
     },
 
     topic: {
-        backgroundColor: "#ff0000",
+        // backgroundColor: "#ff0000",
         width: 200,
         height: 50,
         textAlign: "center",
@@ -45,8 +45,7 @@ export const styles = StyleSheet.create({
 
     btn: {
         backgroundColor: '#B0C0EB',
-        width: 200,
-        height: 50,
+        minWidth:100,
         textAlign: "center",
         marginTop: 10,
         ...Platform.select({
