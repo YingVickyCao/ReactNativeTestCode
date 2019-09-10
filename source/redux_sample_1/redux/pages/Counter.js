@@ -2,45 +2,49 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import store from '../store/index'
-// import { connect } from 'react-redux'
 import { increment, decrement } from '../action/counter'
 
 export default class Counter extends Component {
     // Mounting
     constructor(props) {
         super(props)
+
         this.state = store.getState();
-        store.subscribe(() => {
+
+        this.unsubscribe = store.subscribe(() => {
             console.log(store.getState())
             this.setState(store.getState())
         })
     }
-    // Mounting + Updating 
+
+    componentWillUnmount() {
+        super.componentWillUnmount();
+
+        // Stop listening to state updates
+        this.unsubscribe();
+    }
+
     render() {
         return (
 
             <View style={styles.container}>
-                <TouchableOpacity onPress={this._onPress4Increment}>
-                    <Text style={styles.action} >
-                        +
-                        </Text>
-                </TouchableOpacity>
-
+                <Text style={styles.action} onPress={this._onPress4Increment} >
+                    +
+                </Text>
 
                 <Text style={styles.num}>
                     {this.state.num}
                 </Text>
 
-                <TouchableOpacity onPress={this._onPress4Decrement}>
-                    <Text style={[styles.action, { width: 100 }]}>
-                        -
-                    </Text>
-                </TouchableOpacity>
+                <Text style={[styles.action, { width: 50, alignItems: "center" }]} onPress={this._onPress4Decrement} >
+                    -
+                </Text>
             </View >
 
         );
     }
     _onPress4Increment() {
+        // Dispatching Actions
         store.dispatch(increment())
     }
 
@@ -52,7 +56,6 @@ export default class Counter extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#F0B27A',
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: "center",
@@ -60,7 +63,7 @@ const styles = StyleSheet.create({
     }
     , action: {
         fontSize: 50,
-        color: '#4EEB68',
+        color: '#000',
         backgroundColor: '#ff0000',
     }
     , num: {
