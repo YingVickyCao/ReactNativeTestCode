@@ -1,4 +1,4 @@
-package com.test;
+package com.test.v1;
 
 import android.app.Application;
 
@@ -7,6 +7,7 @@ import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
+import com.test.BuildConfig;
 import com.test._native_modules.ToastPackage;
 
 import java.util.Arrays;
