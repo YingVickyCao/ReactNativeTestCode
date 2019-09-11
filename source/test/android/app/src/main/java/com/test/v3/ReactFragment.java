@@ -1,13 +1,18 @@
-package com.test.v2;
+package com.test.v3;
 
-import android.app.Activity;
+import android.app.Fragment;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactRootView;
@@ -17,7 +22,9 @@ import com.facebook.react.shell.MainReactPackage;
 import com.test.BuildConfig;
 import com.test._native_modules.ToastPackage;
 
-public class MainActivity extends Activity implements DefaultHardwareBackBtnHandler {
+public class ReactFragment extends Fragment implements DefaultHardwareBackBtnHandler, IBackPressed {
+    public static final String TAG = ReactFragment.class.getSimpleName();
+
     private final int OVERLAY_PERMISSION_REQ_CODE = 1;
 
     private ReactRootView mReactRootView;
@@ -29,21 +36,31 @@ public class MainActivity extends Activity implements DefaultHardwareBackBtnHand
      */
     private ReactInstanceManager mReactInstanceManager;
 
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (!Settings.canDrawOverlays(this)) {
-                Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + getPackageName()));
+            if (!Settings.canDrawOverlays(getActivity())) {
+                Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + getActivity().getPackageName()));
                 startActivityForResult(intent, OVERLAY_PERMISSION_REQ_CODE);
             }
         }
 
-        mReactRootView = new ReactRootView(this);
+        mReactRootView = new ReactRootView(getActivity());
         mReactInstanceManager = ReactInstanceManager.builder()
-                .setApplication(getApplication())
-                .setCurrentActivity(this)
+                .setApplication(getActivity().getApplication())
+                .setCurrentActivity(getActivity())
                 .setBundleAssetName("index.android.bundle")
                 .setJSMainModulePath("index")
                 .addPackage(new MainReactPackage())
@@ -54,23 +71,33 @@ public class MainActivity extends Activity implements DefaultHardwareBackBtnHand
         // 注意这里的MyReactNativeApp必须对应“index.js”中的 AppRegistry.registerComponent()”的第一个参数
         mReactRootView.startReactApplication(mReactInstanceManager, "test", null);
 
-        setContentView(mReactRootView);
+        mReactRootView.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
+                    onBackPressed();
+                    return true;
+                }
+                return false;
+            }
+        });
+        return mReactRootView;
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == OVERLAY_PERMISSION_REQ_CODE) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                if (!Settings.canDrawOverlays(this)) {
+                if (!Settings.canDrawOverlays(getActivity())) {
                     // SYSTEM_ALERT_WINDOW permission not granted
                 }
             }
         }
 
         // Integrating Native Modules which use startActivityForResult
-        mReactInstanceManager.onActivityResult(this, requestCode, resultCode, data);
+        mReactInstanceManager.onActivityResult(getActivity(), requestCode, resultCode, data);
     }
 
     // 把后退按钮事件传递给 React Native
@@ -79,56 +106,56 @@ public class MainActivity extends Activity implements DefaultHardwareBackBtnHand
         if (mReactInstanceManager != null) {
             mReactInstanceManager.onBackPressed();
         } else {
-            super.onBackPressed();
+            getActivity().onBackPressed();
         }
     }
 
-    @Override
-    public boolean onKeyUp(int keyCode, KeyEvent event) {
-        // Android studio Emulator, Ctrl+M ->  dev menu
-        if (keyCode == KeyEvent.KEYCODE_MENU && mReactInstanceManager != null) {
-            mReactInstanceManager.showDevOptionsDialog();
-            return true;
-        }
-        return super.onKeyUp(keyCode, event);
-    }
+//    @Override
+//    public boolean onKeyUp(int keyCode, KeyEvent event) {
+//        // Android studio Emulator, Ctrl+M ->  dev menu
+//        if (keyCode == KeyEvent.KEYCODE_MENU && mReactInstanceManager != null) {
+//            mReactInstanceManager.showDevOptionsDialog();
+//            return true;
+//        }
+//        return super.onKeyUp(keyCode, event);
+//    }
 
     // When JavaScript doesn't handle the back button press, invokeDefaultOnBackPressed method will be called. By default this simply finishes Activity.
     @Override
     public void invokeDefaultOnBackPressed() {
-        super.onBackPressed();
+        getActivity().onBackPressed();
     }
 
+//    @Override
+//    public void onPointerCaptureChanged(boolean hasCapture) {
+//
+//    }
+
+
     @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
-
-    }
-
-
-    @Override
-    protected void onPause() {
+    public void onPause() {
         super.onPause();
 
         if (mReactInstanceManager != null) {
-            mReactInstanceManager.onHostPause(this);
+            mReactInstanceManager.onHostPause(getActivity());
         }
     }
 
     @Override
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
 
         if (mReactInstanceManager != null) {
-            mReactInstanceManager.onHostResume(this, this);
+            mReactInstanceManager.onHostResume(getActivity(), this);
         }
     }
 
     @Override
-    protected void onDestroy() {
+    public void onDestroy() {
         super.onDestroy();
 
         if (mReactInstanceManager != null) {
-            mReactInstanceManager.onHostDestroy(this);
+            mReactInstanceManager.onHostDestroy(getActivity());
         }
         if (mReactRootView != null) {
             mReactRootView.unmountReactApplication();
