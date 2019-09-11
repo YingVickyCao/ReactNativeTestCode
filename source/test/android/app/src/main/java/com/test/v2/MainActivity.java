@@ -17,6 +17,7 @@ import com.facebook.react.shell.MainReactPackage;
 import com.test.BuildConfig;
 import com.test._native_modules.ToastPackage;
 
+// https://reactnative.cn/docs/integration-with-existing-apps/
 public class MainActivity extends Activity implements DefaultHardwareBackBtnHandler {
     private final int OVERLAY_PERMISSION_REQ_CODE = 1;
 
