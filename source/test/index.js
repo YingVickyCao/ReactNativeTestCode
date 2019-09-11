@@ -3,6 +3,7 @@
  */
 
 import { AppRegistry } from 'react-native';
+
 // import App from './App';
 // import App from './myview/TestStyle';
 // import App from './myview/TestProps';
@@ -21,7 +22,7 @@ import { AppRegistry } from 'react-native';
 
 // import App from './communication_between_components/parent_2_child/ParentView';
 // import App from './communication_between_components/child_2_parent/ParentView';
-import App from './communication_between_components/child_2_child/ParentView';
+// import App from './communication_between_components/child_2_child/ParentView';
 // import App from './network/TestImage'
 
 // import App from './network/async/Movies'
@@ -32,6 +33,8 @@ import App from './communication_between_components/child_2_child/ParentView';
 // import App from './myview/TestTouchable'
 // import App from './redux/pages/login'
 // import App from './redux/pages/Counter'
+
+import App from './native/ToastComponent'
 
 import { name as appName } from './app.json';
 AppRegistry.registerComponent(appName, () => App);
