@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,7 +23,7 @@ import com.facebook.react.shell.MainReactPackage;
 import com.test.BuildConfig;
 import com.test._native_modules.ToastPackage;
 
-public class ReactFragment extends Fragment implements DefaultHardwareBackBtnHandler, IBackPressed {
+public class ReactFragment extends Fragment implements DefaultHardwareBackBtnHandler, IOnKeyUp,IBackPressed {
     public static final String TAG = ReactFragment.class.getSimpleName();
 
     private final int OVERLAY_PERMISSION_REQ_CODE = 1;
@@ -36,15 +37,21 @@ public class ReactFragment extends Fragment implements DefaultHardwareBackBtnHan
      */
     private ReactInstanceManager mReactInstanceManager;
 
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        if (context instanceof MainActivity) {
+            ((MainActivity) context).setOnKeyUp(this);
+        }
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
+        Context context = getActivity();
+        if (context instanceof MainActivity) {
+            ((MainActivity) context).setOnKeyUp(null);
+        }
     }
 
     @Nullable
@@ -104,21 +111,24 @@ public class ReactFragment extends Fragment implements DefaultHardwareBackBtnHan
     @Override
     public void onBackPressed() {
         if (mReactInstanceManager != null) {
+            Log.d(TAG, "onBackPressed: ");
             mReactInstanceManager.onBackPressed();
         } else {
             getActivity().onBackPressed();
         }
     }
 
-//    @Override
-//    public boolean onKeyUp(int keyCode, KeyEvent event) {
-//        // Android studio Emulator, Ctrl+M ->  dev menu
-//        if (keyCode == KeyEvent.KEYCODE_MENU && mReactInstanceManager != null) {
-//            mReactInstanceManager.showDevOptionsDialog();
-//            return true;
-//        }
-//        return super.onKeyUp(keyCode, event);
-//    }
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        // Android studio Emulator, Ctrl+M ->  dev menu
+        Log.d(TAG, "onKeyUp: ");
+        if (keyCode == KeyEvent.KEYCODE_MENU && null != mReactInstanceManager) {
+            Log.d(TAG, "onKeyUp: Menu");
+            mReactInstanceManager.showDevOptionsDialog();
+            return true;
+        }
+        return false;
+    }
 
     // When JavaScript doesn't handle the back button press, invokeDefaultOnBackPressed method will be called. By default this simply finishes Activity.
     @Override

@@ -1,24 +1,16 @@
 package com.test.v3;
 
 import android.app.Activity;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.KeyEvent;
 
-import com.facebook.react.ReactInstanceManager;
-import com.facebook.react.ReactRootView;
-import com.facebook.react.common.LifecycleState;
-import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
-import com.facebook.react.shell.MainReactPackage;
-import com.test.BuildConfig;
 import com.test.R;
-import com.test._native_modules.ToastPackage;
 
 public class MainActivity extends Activity {
+    private static final String TAG = MainActivity.class.getSimpleName();
+    private IOnKeyUp mOnKeyUp;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,5 +25,16 @@ public class MainActivity extends Activity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+    }
+
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        // Android studio Emulator, Ctrl+M ->  dev menu
+        Log.d(TAG, "onKeyUp: ");
+        return null != mOnKeyUp && mOnKeyUp.onKeyUp(keyCode, event) || super.onKeyUp(keyCode, event);
+    }
+
+    public void setOnKeyUp(@Nullable IOnKeyUp onKeyUp) {
+        mOnKeyUp = onKeyUp;
     }
 }
