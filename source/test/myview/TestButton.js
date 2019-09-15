@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Button, View, StyleSheet, Alert } from 'react-native'
 
 export default class UseButton extends Component {
+    
     _onPressBtn() {
         Alert.alert('Button clicked.');
     }
