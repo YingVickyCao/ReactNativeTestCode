@@ -4,7 +4,7 @@
 
 import { AppRegistry } from 'react-native';
 
-// import App from './App';
+import App from './App';
 // import App from './myview/TestStyle';
 // import App from './myview/TestProps';
 // import App from './myview/CustomView';
@@ -31,10 +31,11 @@ import { AppRegistry } from 'react-native';
 // import App from './myview/TestScrollView'
 // import App from './myview/TestButton'
 // import App from './myview/TestTouchable'
-// import App from './redux/pages/login'
-// import App from './redux/pages/Counter'
 
-import App from './native/ToastComponent'
+// import App from './native/ToastComponent'
+
+// import App from './myView/TestWindowComponent'
+
 
 import { name as appName } from './app.json';
 AppRegistry.registerComponent(appName, () => App);

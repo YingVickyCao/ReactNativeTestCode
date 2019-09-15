@@ -8,7 +8,6 @@ export default class TostComponent extends Component {
         this._onPressToShowNativeToast = this._onPressToShowNativeToast.bind(this);
     }
 
-
     render() {
         return (
             <View style={styles.container}>

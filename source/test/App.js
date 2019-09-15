@@ -9,9 +9,6 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 
-import { Provider } from 'react-redux';
-import store from './redux/store/index'
-
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
   android:
@@ -23,13 +20,11 @@ type Props = {};
 export default class App extends Component<Props> {
   render() {
     return (
-      <Provider store={store}>
         <View style={styles.container}>
           <Text style={styles.welcome}>Welcome to React Native!</Text>
           <Text style={styles.instructions}>To get started, edit App.js</Text>
           <Text style={styles.instructions}>{instructions}</Text>
         </View>
-      </Provider>
     );
   }
 }

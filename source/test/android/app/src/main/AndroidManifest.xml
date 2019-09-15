@@ -6,6 +6,7 @@
 
 <!--    android:name=".v1.App"-->
     <application
+        android:name=".v1.App"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -15,8 +16,9 @@
         tools:ignore="GoogleAppIndexingWarning">
         <!--        android:name=".v1.MainActivity"-->
 <!--        android:name=".v2.MainActivity"-->
+<!--        android:name=".v3.MainActivity"-->
         <activity
-            android:name=".v3.MainActivity"
+            android:name=".v1.MainActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:label="@string/app_name"
             android:windowSoftInputMode="adjustResize">
