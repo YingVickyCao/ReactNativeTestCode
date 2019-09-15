@@ -33,7 +33,7 @@ import { AppRegistry } from 'react-native';
 // import App from './myview/TestTouchable'
 
 // import App from './native/ToastComponent'
-import App from  './myview/TestSize'
+import App from  './book/TestSize'
 
 import { name as appName } from './app.json';
 AppRegistry.registerComponent(appName, () => App);

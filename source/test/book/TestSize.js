@@ -7,20 +7,24 @@ import {
   PixelRatio,
   Platform
 } from "react-native";
-import IphoneX from "../tools/IphoneX";
 
 const pxValue = PixelRatio.get();
 
 /**
  * androdi:float
  * float -> int. parseInt(width)
- * 
+ *
  * ios:int
  */
 const { height, width } = Dimensions.get("window");
 
 export default class TestSizeComponent extends Component {
   render() {
+    // console
+    // console.warn("warm"); // Yellow
+    // console.error("error"); // Red
+    // console.log("log");
+    
     return (
       <View style={styles.container}>
         <Text style={styles.text}>1逻辑像素(dp) = {pxValue} 实际像素(px)</Text>
@@ -48,6 +52,7 @@ const styles = StyleSheet.create({
   text: {
     padding: 10,
     height: 45,
+    width: "50%",
     backgroundColor: "#52BE80",
     marginBottom: 1,
     color: "#000"
