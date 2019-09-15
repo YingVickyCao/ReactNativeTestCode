@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import {
   View,
   Text,
-  StyleSheet,
   Dimensions,
   PixelRatio,
-  Platform
 } from "react-native";
+
+import {styles} from '../tools/Styles'
 
 const pxValue = PixelRatio.get();
 
@@ -24,7 +24,7 @@ export default class TestSizeComponent extends Component {
     // console.warn("warm"); // Yellow
     // console.error("error"); // Red
     // console.log("log");
-    
+
     return (
       <View style={styles.container}>
         <Text style={styles.text}>1逻辑像素(dp) = {pxValue} 实际像素(px)</Text>
@@ -34,27 +34,3 @@ export default class TestSizeComponent extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#f7f9fa",
-    // Adjust Platform
-    ...Platform.select({
-      ios: {
-        marginTop: 50
-      },
-      android: {
-        marginTop: 40
-      }
-    })
-  },
-  text: {
-    padding: 10,
-    height: 45,
-    width: "50%",
-    backgroundColor: "#52BE80",
-    marginBottom: 1,
-    color: "#000"
-  }
-});
