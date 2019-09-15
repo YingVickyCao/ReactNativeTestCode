@@ -1,5 +1,11 @@
 import { StyleSheet, Platform } from "react-native";
 
+/**
+ * ES6:
+ * const styles = StyleSheet.create({}); 是一条语句。它定义了一个名为styles的对象。
+ * 在styles内部定义了样式,返回reference from the given object
+ */
+// export const styles = {
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -43,3 +49,4 @@ export const styles = StyleSheet.create({
     marginBottom: 5
   }
 });
+// };
