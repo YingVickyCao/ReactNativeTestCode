@@ -1,13 +1,12 @@
-import {
-  StyleSheet,
-  Platform
-} from "react-native";
+import { StyleSheet, Platform } from "react-native";
 
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems:'center',
-    backgroundColor: "#f7f9fa",
+    paddingStart: 10,
+    paddingEnd: 10,
+    alignItems: "center",
+    backgroundColor: "#EEEEEE",
     // Adjust Platform
     ...Platform.select({
       ios: {
@@ -21,10 +20,26 @@ export const styles = StyleSheet.create({
   text: {
     padding: 10,
     height: 45,
-    width: "80%",
-    backgroundColor: "#52BE80",
+    width: "100%",
+    backgroundColor: "#FFEBEE",
     marginBottom: 1,
     color: "#000",
-    marginBottom:5,
+    marginBottom: 5
+  },
+  btn: {
+    padding: 10,
+    height: 45,
+    width: "80%",
+    textAlign: "center",
+    backgroundColor: "#69F0AE",
+    marginBottom: 1,
+    color: "#000",
+    marginBottom: 5
+  },
+  input: {
+    backgroundColor: "#E1BEE7",
+    width: "100%",
+    minHeight: 50,
+    marginBottom: 5
   }
 });
