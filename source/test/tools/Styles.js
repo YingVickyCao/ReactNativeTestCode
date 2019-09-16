@@ -43,7 +43,7 @@ export const styles = StyleSheet.create({
     marginBottom: 5
   },
   input: {
-    backgroundColor: "#E1BEE7",
+    backgroundColor: "#E5E8E8",
     width: "100%",
     minHeight: 50,
     marginBottom: 5
