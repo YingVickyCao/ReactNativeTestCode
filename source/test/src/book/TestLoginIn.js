@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { View, Text, TextInput } from 'react-native';
 import { styles } from '../tools/Styles';
+import PhoneTextComponent from './phoneText';
+import PwdTextComponent from './pwdText';
 
 export default class LoginIn extends Component {
 	constructor(props) {
@@ -61,13 +63,21 @@ export default class LoginIn extends Component {
 			<View style={styles.container}>
 				<TextInput style={styles.input} placeholder='Input phone' onChangeText={newValue => this._onChangeText_4_phone(newValue)} />
 
-				<Text style={styles.text}>{this.state.phone}</Text>
+				{/* <Text style={styles.text}>{this.state.phone}</Text> */}
+				<PhoneTextComponent style={styles.text} phone={this.state.phone}></PhoneTextComponent>
 
 				<TextInput style={styles.input} placeholder='Input pwd' onChangeText={this._onChangeText_4_pwd} secureTextEntry={true} />
-				<Text style={styles.text}>{this.state.pwd}</Text>
+
+				{/* <Text style={styles.text}>{this.state.pwd}</Text> */}
+				<PwdTextComponent style={styles.text} pwd={this.state.pwd}></PwdTextComponent>
 
 				<Text style={styles.btn}>Confirm</Text>
 			</View>
 		);
+	}
+
+	shouldComponentUpdate(nextProps, nextState) {
+		// 决定是否渲染组件？false = not
+		super(nextProps, nextState);
 	}
 }
