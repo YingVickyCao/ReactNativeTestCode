@@ -36,14 +36,21 @@ export default class LoginIn extends Component {
 	// 	});
 	// }
 
+	// new state 根据old state 的key，实现modify和Add key对应的value
 	_onChangeText_4_pwd(newValue) {
-		this.setState(() => {
+		// setState is before render();
+		this.setState(oldState => {
+			for (var item in oldState) {
+				console.log(item, oldState[item]);
+			}
 			return {
-				pwd: newValue
+				pwd: newValue,
+				a_var_brand_in_newState: 'I am  a new var'
 			};
 		}, this._changePwdDone);
 	}
 	_changePwdDone() {
+		// after render();
 		console.log('Pwd changed.');
 	}
 

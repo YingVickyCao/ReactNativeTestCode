@@ -27,8 +27,6 @@ export const styles = StyleSheet.create({
 		padding: 10,
 		height: 45,
 		width: '100%',
-		backgroundColor: '#FFEBEE',
-		marginBottom: 1,
 		color: '#000',
 		marginBottom: 5
 	},
@@ -38,12 +36,11 @@ export const styles = StyleSheet.create({
 		width: '80%',
 		textAlign: 'center',
 		backgroundColor: '#69F0AE',
-		marginBottom: 1,
 		color: '#000',
 		marginBottom: 5
 	},
 	input: {
-		backgroundColor: '#E5E8E8',
+		backgroundColor: '#FFEBEE',
 		width: '100%',
 		minHeight: 50,
 		marginBottom: 5
