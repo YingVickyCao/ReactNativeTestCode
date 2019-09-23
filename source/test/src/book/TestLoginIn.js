@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, TextInput } from 'react-native';
 import { styles } from '../tools/Styles';
-import PhoneTextComponent from './phoneText';
+// import PhoneTextComponent from './phoneText';
 import PwdTextComponent from './pwdText';
 
 export default class LoginIn extends Component {
@@ -22,12 +22,27 @@ export default class LoginIn extends Component {
            render(),  state:{phone: 123, pwd: ""}
          */
 	// phone: 123
+	// write_style_1:
+	// _onChangeText_4_phone(newValue) {
+	// 	this.setState(state => {
+	// 		return {
+	// 			phone: newValue
+	// 		};
+	// 	});
+	// }
+
+	// write_style_2:
+	// _onChangeText_4_phone(newValue) {
+	// 	this.setState(() => {
+	// 		return {
+	// 			phone: newValue
+	// 		};
+	// 	});
+	// }
+
+	// write_style_3:
 	_onChangeText_4_phone(newValue) {
-		this.setState(state => {
-			return {
-				phone: newValue
-			};
-		});
+		this.setState({ phone: newValue });
 	}
 
 	// _onChangeText_4_pwd(newValue) {
@@ -61,10 +76,11 @@ export default class LoginIn extends Component {
 
 		return (
 			<View style={styles.container}>
+				{/* // write_style_4:  onChangeText={(phone) => this.setState({ phone }) */}
 				<TextInput style={styles.input} placeholder='Input phone' onChangeText={newValue => this._onChangeText_4_phone(newValue)} />
 
-				{/* <Text style={styles.text}>{this.state.phone}</Text> */}
-				<PhoneTextComponent style={styles.text} phone={this.state.phone}></PhoneTextComponent>
+				<Text style={styles.text}>{this.state.phone}</Text>
+				{/* <PhoneTextComponent style={styles.text} phone={this.state.phone}></PhoneTextComponent> */}
 
 				<TextInput style={styles.input} placeholder='Input pwd' onChangeText={this._onChangeText_4_pwd} secureTextEntry={true} />
 
@@ -74,10 +90,5 @@ export default class LoginIn extends Component {
 				<Text style={styles.btn}>Confirm</Text>
 			</View>
 		);
-	}
-
-	shouldComponentUpdate(nextProps, nextState) {
-		// 决定是否渲染组件？false = not
-		super(nextProps, nextState);
 	}
 }
