@@ -28,12 +28,23 @@ export default class LoginIn extends Component {
 		});
 	}
 
+	// _onChangeText_4_pwd(newValue) {
+	// 	this.setState(() => {
+	// 		return {
+	// 			pwd: newValue
+	// 		};
+	// 	});
+	// }
+
 	_onChangeText_4_pwd(newValue) {
 		this.setState(() => {
 			return {
 				pwd: newValue
 			};
-		});
+		}, this._changePwdDone);
+	}
+	_changePwdDone() {
+		console.log('Pwd changed.');
 	}
 
 	render() {

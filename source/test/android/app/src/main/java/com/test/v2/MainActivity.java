@@ -1,13 +1,14 @@
 package com.test.v2;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.support.annotation.Nullable;
 import android.view.KeyEvent;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactRootView;
@@ -18,7 +19,7 @@ import com.test.BuildConfig;
 import com.test._native_modules.ToastPackage;
 import com.test.v3.IBackPressed;
 
-public class MainActivity extends Activity implements DefaultHardwareBackBtnHandler, IBackPressed {
+public class MainActivity extends AppCompatActivity implements DefaultHardwareBackBtnHandler, IBackPressed {
     private final int OVERLAY_PERMISSION_REQ_CODE = 1;
 
     private ReactRootView mReactRootView;

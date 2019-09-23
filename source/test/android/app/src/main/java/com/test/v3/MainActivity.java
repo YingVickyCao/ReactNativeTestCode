@@ -1,14 +1,15 @@
 package com.test.v3;
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.KeyEvent;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.test.R;
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
     private IOnKeyUp mOnKeyUp;
 
@@ -19,7 +20,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.main_view);
 
         findViewById(R.id.react_fragment_container);
-        getFragmentManager().beginTransaction().replace(R.id.react_fragment_container, new ReactFragment(), ReactFragment.TAG).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.react_fragment_container, new ReactFragment(), ReactFragment.TAG).commit();
     }
 
     @Override
