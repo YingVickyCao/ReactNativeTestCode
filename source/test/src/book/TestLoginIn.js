@@ -5,8 +5,15 @@ import { styles } from '../tools/Styles';
 import PwdTextComponent from './pwdText';
 
 export default class LoginIn extends Component {
+	static staticNum = 1; // 组件的静态成员变量
+	// 组件的静态成员函数
+	static printStaticNum() {
+		console.log('printStaticNum:' + LoginIn.staticNum);
+	}
+
 	constructor(props) {
 		super(props);
+		this.isInit = false; // 组件的成员变量
 
 		this.state = {
 			phone: '',
@@ -73,6 +80,13 @@ export default class LoginIn extends Component {
 
 	render() {
 		console.log('TestLogin, render(), ', this.state);
+		console.log('render(), isInit 1:', this.isInit);
+		this.isInit = true;
+		console.log('render(), isInit 2:', this.isInit);
+
+		LoginIn.printStaticNum();
+		LoginIn.staticNum = 100;
+		LoginIn.printStaticNum();
 
 		return (
 			<View style={styles.container}>
