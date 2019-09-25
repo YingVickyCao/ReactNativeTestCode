@@ -32,6 +32,7 @@ export default class LoginIn extends Component {
 	// write_style_1:
 	// _onChangeText_4_phone(newValue) {
 	// 	this.setState(state => {
+	// 		console.log('_onChangeText_4_phone:', this);
 	// 		return {
 	// 			phone: newValue
 	// 		};
@@ -52,27 +53,27 @@ export default class LoginIn extends Component {
 		this.setState({ phone: newValue });
 	}
 
-	// _onChangeText_4_pwd(newValue) {
-	// 	this.setState(() => {
-	// 		return {
-	// 			pwd: newValue
-	// 		};
-	// 	});
-	// }
+	_onChangeText_4_pwd(newValue) {
+		this.setState(() => {
+			return {
+				pwd: newValue
+			};
+		});
+	}
 
 	// new state 根据old state 的key，实现modify和Add key对应的value
-	_onChangeText_4_pwd(newValue) {
-		// setState is before render();
-		this.setState(oldState => {
-			for (var item in oldState) {
-				console.log(item, oldState[item]);
-			}
-			return {
-				pwd: newValue,
-				a_var_brand_in_newState: 'I am  a new var'
-			};
-		}, this._changePwdDone);
-	}
+	// _onChangeText_4_pwd(newValue) {
+	// 	// setState is before render();
+	// 	this.setState(oldState => {
+	// 		for (var item in oldState) {
+	// 			console.log(item, oldState[item]);
+	// 		}
+	// 		return {
+	// 			pwd: newValue,
+	// 			a_var_brand_in_newState: 'I am  a new var'
+	// 		};
+	// 	}, this._changePwdDone);
+	// }
 	_changePwdDone() {
 		// after render();
 		console.log('Pwd changed.');
@@ -87,6 +88,8 @@ export default class LoginIn extends Component {
 		LoginIn.printStaticNum();
 		LoginIn.staticNum = 100;
 		LoginIn.printStaticNum();
+
+		console.log('render:', this);
 
 		return (
 			<View style={styles.container}>
