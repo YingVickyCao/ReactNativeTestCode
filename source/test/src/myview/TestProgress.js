@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { ProgressBarAndroid, ProgressViewIOS, View, StyleSheet, Platform } from 'react-native';
 
-export default class App extends Component {
+export default class LoadingComponent extends Component {
 	render() {
 		if (Platform.OS === 'android') {
 			return (
 				<View style={styles.container}>
 					<ProgressBarAndroid style={styles.progress} />
-					<ProgressBarAndroid style={styles.progress} styleAttr='Horizontal' />
+					{/* <ProgressBarAndroid style={styles.progress} styleAttr='Horizontal' />
 					<ProgressBarAndroid style={styles.progress} styleAttr='Horizontal' color='red' indeterminate={false} progress={0.8} animating={true} />
-					<ProgressBarAndroid style={styles.progress} styleAttr='Horizontal' color='red' indeterminate={false} progress={0.8} animating={false} />
+					<ProgressBarAndroid style={styles.progress} styleAttr='Horizontal' color='red' indeterminate={false} progress={0.8} animating={false} /> */}
 				</View>
 			);
 		} else {
@@ -27,11 +27,9 @@ export default class App extends Component {
 
 const styles = StyleSheet.create({
 	container: {
-		// backgroundColor: 'yellow',
-		height: '50%',
-		marginTop: 100
+		backgroundColor: 'yellow'
 	},
 	progress: {
-		marginBottom: 50
+		alignItems: 'center'
 	}
 });

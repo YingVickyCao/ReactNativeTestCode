@@ -44,6 +44,9 @@ export const styles = StyleSheet.create({
 		width: '100%',
 		minHeight: 50,
 		marginBottom: 5
+	},
+	testSizeBig: {
+		fontSize: 50
 	}
 });
 // };
