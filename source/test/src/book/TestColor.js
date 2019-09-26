@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { styles } from '../tools/Styles';
-
+//  https://www.w3school.com.cn/cssref/css_colors_legal.asp
 export default class ColorComponent extends Component {
 	render() {
 		return (
